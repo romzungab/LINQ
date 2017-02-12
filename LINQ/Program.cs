@@ -97,9 +97,20 @@ namespace LINQ
             }
             Console.WriteLine(str3.ToString());
 
+            Console.WriteLine("ANOTHER TRY");
+            var reverseList = students.Select(s => new { revFirst = s.First.Reverse().ToArray() });
+            StringBuilder stri = new StringBuilder();
+            stri.Append("\nStudents in reversed\n");
+            foreach (var student in reverseList)
+            {
+                stri.Append(student.revFirst);
+                stri.Append("\n");
+            }
+            Console.WriteLine(stri.ToString());
+
             //Generate student to a new List object and the object have FirstName and LastName property
 
-            var newStudentList = students.Select(x => new { FirstName = x.First, LastName = x.Last }).ToList();
+            var newStudentList = students.Select(student => new { FirstName = student.First, LastName = student.Last }).ToList();
             StringBuilder str4 = new StringBuilder();
             str4.Append("\nNew Student List\n");
             foreach (var student in newStudentList)
